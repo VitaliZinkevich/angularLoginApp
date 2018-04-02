@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 
+import { AuthService } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-          {
+        {
         path:'login',
         component:LoginComponent
         },
@@ -33,15 +34,11 @@ import { HomeComponent } from './home/home.component';
         path:'',
         component:HomeComponent
         }
-
-
-
-
-
-
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
