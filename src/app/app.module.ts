@@ -10,6 +10,9 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthService } from './auth.service'
+import {UserService} from './user.service'
+import {AuthGuard} from './auth.guard'
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { AuthService } from './auth.service'
         },
         {
         path:'admin',
-        component:AdminComponent
+        component:AdminComponent,
+        canActivate: [AuthGuard]
         },
         {
         path:'',
@@ -37,7 +41,9 @@ import { AuthService } from './auth.service'
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -10,12 +10,23 @@ export class AuthService {
 
   constructor(private http: HttpClient ) { }
 
+  isLoggedInStatus : false;
+
+  setLoggedInStatus (param){
+      this.isLoggedInStatus  = param;
+  }
+
+
+
+
  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
-      
+
     })
   };
+
+
 
     getUserDetails(username,password){
 
@@ -26,7 +37,7 @@ export class AuthService {
                 console.log (data, 'this from sever')
                 //console.log (data.value)
             })*/
-        
+
         }
 
 }

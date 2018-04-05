@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service'
+import {Router} from '@angular/router'
 
 import {Data} from '../data'
 
@@ -10,7 +11,8 @@ import {Data} from '../data'
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private auth: AuthService) { }
+  constructor( private auth: AuthService,
+               private router: Router ) { }
 
   ngOnInit( ) {
   }
@@ -18,20 +20,23 @@ export class LoginComponent implements OnInit {
 
   loginUser (e){
     e.preventDefault();
-    
+
     const username = e.target.username.value;
     const password = e.target.password.value;
-    
+
     this.auth.getUserDetails (username,password).subscribe ( <Data> (data) => {
       console.log(data)
       if (data.success === true) {
-          console.log ('ADMIN LOG IN')
+          this.router.navigate(['admin'])
+          this.auth.setLoggedInStatus(true);
 
       } else {
         window.alert (data.mesg)
+
       }
-      
+
     });
 
   }
+
 }
