@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-
+import { Observable } from 'rxjs/Rx'
 
 @Injectable()
 export class AuthService {
@@ -10,12 +10,20 @@ export class AuthService {
 
   constructor(private http: HttpClient ) { }
 
-  isLoggedInStatus = JSON.parse (localStorage.getItem('loggedIn') || 'false');
+  isLoggedInStatus = false;
+
 
   setLoggedInStatus (param: boolean){
 
       this.isLoggedInStatus  = param;
-      localStorage.setItem ('loggedIn', 'true')
+
+  }
+
+
+  isLogged() {
+
+    return this.isLoggedInStatus
+
   }
 
 
