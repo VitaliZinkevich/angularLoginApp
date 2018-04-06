@@ -10,10 +10,12 @@ export class AuthService {
 
   constructor(private http: HttpClient ) { }
 
-  isLoggedInStatus : false;
+  isLoggedInStatus = JSON.parse (localStorage.getItem('loggedIn') || 'false');
 
-  setLoggedInStatus (param){
+  setLoggedInStatus (param: boolean){
+
       this.isLoggedInStatus  = param;
+      localStorage.setItem ('loggedIn', 'true')
   }
 
 
