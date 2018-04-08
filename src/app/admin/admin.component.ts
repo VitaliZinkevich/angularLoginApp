@@ -23,8 +23,7 @@ constructor ( private user: UserService,
 
 ngOnInit() {
 
-
-    this.user.getData().subscribe ( <backData> (data) => {
+this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
         this.message = data.respond
 
   })

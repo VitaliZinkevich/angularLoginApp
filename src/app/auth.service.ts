@@ -21,7 +21,7 @@ export class AuthService {
 
 
   isLogged() {
-
+    //console.log (this.isLoggedInStatus)
     return this.isLoggedInStatus
 
   }
