@@ -28,10 +28,13 @@ return this.user.isLoggedIn().pipe(map (ans=> {
     this.auth.setLoggedInStatus (true)
     return ans.status
   } else {
-    return ans.status
+  this.router.navigate(['login'])
+  return ans.status
+
   }
 
-})
+}))
+
 
 }
 }

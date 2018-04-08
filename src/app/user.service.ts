@@ -9,6 +9,9 @@ interface isLoggedinStatus{
 status: boolean
 }
 
+interface logOutStatus{
+  status: boolean
+}
 
 @Injectable()
 export class UserService {
@@ -24,6 +27,10 @@ isLoggedIn (){
 
 return this.http.get <isLoggedinStatus>('/api/isLoggedIn')
 
+}
+
+loginOut (){
+  return this.http.get <logOutStatus> ('/api/loggout')
 }
 
 }
