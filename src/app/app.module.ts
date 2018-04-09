@@ -10,8 +10,10 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthService } from './auth.service'
-import {UserService} from './user.service'
-import {AuthGuard} from './auth.guard'
+import { UserService } from './user.service'
+import { AuthGuard } from './auth.guard';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {AuthGuard} from './auth.guard'
     AppComponent,
     LoginComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,15 @@ import {AuthGuard} from './auth.guard'
         path:'admin',
         component:AdminComponent,
         canActivate: [AuthGuard]
+        },
+        {
+          path:'register',
+          component:RegisterComponent
+        },
+        {
+          path:'dashboard',
+          component:DashboardComponent
+
         },
         {
         path:'',

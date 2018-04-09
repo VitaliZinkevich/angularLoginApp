@@ -4,6 +4,11 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Rx'
 
+
+interface RegisterRespond {
+  success: boolean
+}
+
 @Injectable()
 export class AuthService {
 
@@ -49,5 +54,12 @@ export class AuthService {
             })*/
 
         }
+
+
+register (username, password, cpassword){
+
+    return this.http.post <RegisterRespond>('api/register', {username,password,cpassword}, this.httpOptions );
+
+    }
 
 }
