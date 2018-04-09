@@ -43,9 +43,9 @@ export class AuthService {
 
 
 
-    getUserDetails(username,password){
+    getUserDetails(email,password){
 
-        return this.http.post ('api/login', {username,password}, this.httpOptions );
+        return this.http.post ('api/login', {email, password}, this.httpOptions );
 
         /*this.http.get('api/login')
         .subscribe (data => {

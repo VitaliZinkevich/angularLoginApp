@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
   loginUser (e){
     e.preventDefault();
 
-    const username = e.target.username.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
 
-    this.auth.getUserDetails (username,password).subscribe ( <Data> (data) => {
+    this.auth.getUserDetails (email,password).subscribe ( <Data> (data) => {
       console.log(data)
       if (data.success === true) {
           this.router.navigate(['admin'])
