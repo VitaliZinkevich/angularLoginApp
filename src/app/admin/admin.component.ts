@@ -4,9 +4,9 @@ import {AuthService} from '../auth.service'
 import {Router} from '@angular/router'
 
 interface backData {
-name: string,
-status: string,
-respond: string
+email: string,
+password: string,
+quote: string
 }
 
 @Component({
@@ -23,7 +23,10 @@ constructor ( private user: UserService,
 ngOnInit() {
 
 this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
-        this.message = data.respond
+  console.log(data)
+
+        this.messageQuote = data.quote
+        this.messageEmail = data.email
 
   })
 
@@ -53,8 +56,8 @@ this.user.loginOut().subscribe (  (data) => {
 
 
 
-message = 'LOADING...';
-
+messageQuote = 'Loading your Quote';
+messageEmail= 'Loading your ID'
 
 
 
