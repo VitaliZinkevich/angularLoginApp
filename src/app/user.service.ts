@@ -18,7 +18,7 @@ export class UserService {
 
 constructor( private http: HttpClient ) { }
 
-  getDataForMESSAGE() {
+getDataForMESSAGE() {
 
     return this.http.get ('/api/database')
 }

@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
           this.auth.setLoggedInStatus(true);
 
       } else {
-        window.alert (data.mesg)
+        window.alert ('INDALIED EMAIL OR PASSWORD')
+        this.router.navigate(['register'])
+
 
       }
 

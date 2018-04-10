@@ -22,32 +22,36 @@ export class RegisterComponent implements OnInit {
 
     event.preventDefault();
 
-    const username = event.target.username.value;
+    const email = event.target.email.value;
     const password = event.target.password.value;
     const cpassword = event.target.cpassword.value;
-    
+
 
     // VALIDATION FRONT
-
+/*
     if (password != cpassword) {
       console.log ('password != cpassword')
       return false
     }
-
+*/
     //
 
 
     //REQ AFTER
-    this.auth.register(username,password, cpassword).subscribe (  (data) => {
-    console.log(data)
+    this.auth.register(email,password, cpassword).subscribe (  (data) => {
+
     if (data.success == true) {
-    this.router.navigate(['dashboard'])
-    //this.router.navigate(['admin'])
+
+    this.auth.setLoggedInStatus (true)
+
+    this.router.navigate(['admin'])
+
 
 
     } else {
+      console.log (data.message)
+      this.router.navigate(['login'])
 
-      console.log ('not true respond')
 
     }
     });

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Rx'
 
 
 interface RegisterRespond {
-  success: boolean
+  success: boolean,
+  message: string
 }
 
 @Injectable()
@@ -56,9 +57,9 @@ export class AuthService {
         }
 
 
-register (username, password, cpassword){
+register (email, password, cpassword){
 
-    return this.http.post <RegisterRespond>('api/register', {username,password,cpassword}, this.httpOptions );
+    return this.http.post <RegisterRespond>('api/register', {email,password,cpassword}, this.httpOptions );
 
     }
 

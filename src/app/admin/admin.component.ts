@@ -32,6 +32,7 @@ this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
 
 
 logOut(){
+
 this.user.loginOut().subscribe (  (data) => {
         console.log ("logOut")
         console.log (data.status)
