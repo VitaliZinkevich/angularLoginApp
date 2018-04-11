@@ -1,4 +1,17 @@
 <p>This quote from {{messageEmail}}</p>
 <p>Quote: {{messageQuote}}</p>
 <hr>
+<form (submit)='saveNewQuote($event)'>
+     <input
+       type="text"
+       id="newQuote"
+       name="newQuote">
+
+<input type='submit' value='Save new quote'/>
+<br>
+{{updateMessage}}
+</form>
+
+
+<hr>
 <button (click)='logOut()'> LogOut</button>

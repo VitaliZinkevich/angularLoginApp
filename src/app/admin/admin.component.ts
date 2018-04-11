@@ -23,7 +23,7 @@ constructor ( private user: UserService,
 ngOnInit() {
 
 this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
-  console.log(data)
+
 
         this.messageQuote = data.quote
         this.messageEmail = data.email
@@ -34,11 +34,41 @@ this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
 }
 
 
+
+saveNewQuote (e){
+e.preventDefault()
+
+const newQuote = e.target.newQuote.value
+
+if (newQuote.length < 3) {
+this.updateMessage = 'qoute at least 3 letter'
+  return false
+}
+
+
+console.log (newQuote)
+
+
+this.user.quoteUpdate(newQuote). subscribe ((data)=> {
+
+if (data.status == true) {
+
+this.messageQuote = data.quote;
+
+}
+
+this.updateMessage = data.message
+
+})
+
+}
+
+
+
 logOut(){
 
 this.user.loginOut().subscribe (  (data) => {
-        console.log ("logOut")
-        console.log (data.status)
+
 
          if (data.status === true) {
            this.auth.setLoggedInStatus (false)
@@ -55,7 +85,7 @@ this.user.loginOut().subscribe (  (data) => {
 
 
 
-
+updateMessage= ''
 messageQuote = 'Loading your Quote';
 messageEmail= 'Loading your ID'
 
