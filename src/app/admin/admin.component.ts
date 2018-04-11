@@ -53,7 +53,7 @@ this.user.quoteUpdate(newQuote). subscribe ((data)=> {
 
 if (data.status == true) {
 
-this.messageQuote = data.quote;
+this.messageQuote = data.qoute;
 
 }
 

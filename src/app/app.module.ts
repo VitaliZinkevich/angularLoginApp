@@ -15,7 +15,8 @@ import { AuthService } from './auth.service'
 import { UserService } from './user.service'
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PinComponent } from './pin/pin.component'
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     AdminComponent,
     HomeComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    PinComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,10 @@ import { DashboardComponent } from './dashboard/dashboard.component'
         {
           path:'register',
           component:RegisterComponent
+        },
+        {
+          path:'pin',
+          component:PinComponent
         },
         {
           path:'dashboard',

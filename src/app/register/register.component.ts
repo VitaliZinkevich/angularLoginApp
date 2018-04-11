@@ -44,7 +44,11 @@ export class RegisterComponent implements OnInit {
 
     this.auth.setLoggedInStatus (true)
 
-    this.router.navigate(['admin'])
+    // перевести на ввод пина при регистрации, отдельный компонент
+    // отслеживать ввод пина ??сессиями + хранение сессий или в базе данных в свойствах пользователя?? что бы если попал но перезагрузился было видно что пин не введен
+    // не отображать REGISTRATION если пользователь залогинен
+
+    this.router.navigate(['pin'])
 
 
 
