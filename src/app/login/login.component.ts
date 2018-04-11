@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
       } else {
         window.alert ('INDALIED EMAIL OR PASSWORD')
-        this.router.navigate(['register'])
+        
 
 
       }

@@ -1,6 +1,14 @@
-<p>You need enter PIN that send to your Email</p>
+<p>You need enter PIN from Email that was send to your Email</p>
+
+<form (submit)='checkPin($event)'>
 <input
 placeholder ='PIN'
 type='text'
-(change)="checkPin($event)"
->
+id = 'pin'
+/>
+<input
+
+type='submit'
+value = 'Check'
+/>
+</form>

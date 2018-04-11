@@ -16,13 +16,50 @@ interface logOutStatus{
 interface updateResponse {
   status: boolean,
   message: string,
-  qoute: string
+  qoute: string,
+  pin: string,
+  pinValidation: boolean
   }
+
+  interface profileForPinValidation{
+
+    email: string,
+    password: string,
+    quote: string,
+    pin: string
+    pinValidation: boolean
+
+  }
+
+  interface PinValidationStatusChange{
+    status: boolean
+  }
+
+interface defPinChange {
+  status:boolean
+}
+
 
 @Injectable()
 export class UserService {
 
 constructor( private http: HttpClient ) { }
+
+
+
+updatePinValidationStatus (){
+
+return this.http.put <PinValidationStatusChange> ('/api/pinvalidationstatus',{status: true})
+
+}
+
+
+askForUserProfilePin(pin){
+
+  return this.http.post <profileForPinValidation>('/api/confirmedPIN', {pin})
+}
+
+
 
 getDataForMESSAGE() {
 
@@ -48,7 +85,6 @@ quoteUpdate (newQuote){
     })
   };
 */
-
 return  this.http.put <updateResponse> ('/api/updateQuote', {newQuote} )
 
 }
