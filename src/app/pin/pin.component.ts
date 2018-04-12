@@ -12,11 +12,13 @@ import { AuthService } from '../auth.service'
 export class PinComponent implements OnInit {
 
   constructor(private user: UserService,
-              private auth: AuthService
+              private auth: AuthService,
               private router: Router) { }
 
   ngOnInit() {
   }
+
+pinValidationStatus
 
 pin=''
 
@@ -30,21 +32,22 @@ if (this.pin.length == 4) {
 
       this.user.askForUserProfilePin(this.pin).subscribe(
         (data)=>{
+          console.log (data)
 
-            if (data.pin == this.pin) {
 
-              this.user.updatePinValidationStatus().subscribe (
-                (data)=>{
-                  if (data.status == true) {
-                    this.router.navigate(['admin'])
-                    this.auth.setLoggedInStatus (true)
-                  }
-                }
-              )
 
-            } else {
-             console.log ('wrong PIN')
-            }
+
+            if (data.status == true) {
+
+            this.router.navigate(['admin'])
+            this.auth.setLoggedInStatus (true)
+
+          } else {
+            window.alert ('wrong PIN')
+
+          }
+
+
 
 
         }

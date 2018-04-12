@@ -21,13 +21,9 @@ interface updateResponse {
   pinValidation: boolean
   }
 
-  interface profileForPinValidation{
+  interface confPinStatus{
 
-    email: string,
-    password: string,
-    quote: string,
-    pin: string
-    pinValidation: boolean
+  status: boolean
 
   }
 
@@ -39,13 +35,27 @@ interface defPinChange {
   status:boolean
 }
 
+interface UserProfile{
+
+  email: string,
+  password: string,
+  quote: string,
+  pin: string
+  pinValidation: boolean
+
+}
+
 
 @Injectable()
 export class UserService {
 
 constructor( private http: HttpClient ) { }
 
+askForUserProfile(){
 
+return this.http.get <UserProfile> ('/api/guardvalidation')
+
+}
 
 updatePinValidationStatus (){
 
@@ -56,7 +66,7 @@ return this.http.put <PinValidationStatusChange> ('/api/pinvalidationstatus',{st
 
 askForUserProfilePin(pin){
 
-  return this.http.post <profileForPinValidation>('/api/confirmedPIN', {pin})
+  return this.http.post <confPinStatus>('/api/confirmedPIN', {pin})
 }
 
 

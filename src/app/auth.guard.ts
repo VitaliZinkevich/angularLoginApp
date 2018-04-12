@@ -18,6 +18,48 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
+/*
+this.user.askForUserProfile().pipe (
+  (data)=>{
+
+          console.log (data)
+
+          if (data.pinValidation == false) {
+
+              this.router.navigate(['pin'])
+
+              return false
+
+          } else {
+
+              this.router.navigate (['admin'])
+              return true
+
+
+          }
+      })
+*/
+
+
+      // only LoginStatusCheck
+
+        return this.user.askForUserProfile().pipe(map (ans=> {
+
+        if (ans.pinValidation == true) {
+          this.auth.setLoggedInStatus (true)
+          return ans.pinValidation
+        } else {
+        //this.router.navigate(['pin'])
+        return ans.pinValidation
+
+        }
+
+      }))
+
+
+
+/*
+// only LoginStatusCheck
 
 if (this.auth.isLogged()){
 return  true
@@ -34,7 +76,6 @@ return this.user.isLoggedIn().pipe(map (ans=> {
   }
 
 }))
-
-
+*/
 }
 }
