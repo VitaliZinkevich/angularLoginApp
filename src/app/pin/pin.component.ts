@@ -20,6 +20,8 @@ export class PinComponent implements OnInit {
 
 pinValidationStatus
 
+
+
 pin=''
 
 checkPin(e){

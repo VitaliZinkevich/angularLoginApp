@@ -45,11 +45,37 @@ interface UserProfile{
 
 }
 
+interface setSessionStatus{
+  status: boolean
+}
+
+interface restoreStatus {
+  status:boolean
+}
 
 @Injectable()
 export class UserService {
 
+  httpOptions = {
+     headers: new HttpHeaders({
+       'Content-Type':  'application/json'
+
+     })
+   };
+
 constructor( private http: HttpClient ) { }
+
+sendPassword(email){
+
+  return this.http.post <restoreStatus>('/api/restorepassword',{email},this.httpOptions)
+}
+
+setSession (){
+  return this.http.get <setSessionStatus>('/api/setsession')
+}
+
+
+
 
 askForUserProfile(){
 

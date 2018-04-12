@@ -47,8 +47,10 @@ this.user.askForUserProfile().pipe (
 
         if (ans.pinValidation == true) {
           this.auth.setLoggedInStatus (true)
+
           return ans.pinValidation
         } else {
+        
         //this.router.navigate(['pin'])
         return ans.pinValidation
 

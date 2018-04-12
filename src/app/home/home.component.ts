@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service'
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user:UserService) { }
 
   ngOnInit() {
+    // set session call only from mainroute
+    /*this.user.setSession().subscribe (
+      (data)=>{
+        console.log (data)
+      }
+    )*/
+
   }
 
 }

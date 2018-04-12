@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth.service'
 import { UserService } from './user.service'
 import { AuthGuard } from './auth.guard';
+import { PinGuard } from './pin.guard'
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PinComponent } from './pin/pin.component'
@@ -49,7 +50,8 @@ import { PinComponent } from './pin/pin.component'
         },
         {
           path:'pin',
-          component:PinComponent
+          component:PinComponent,
+          canActivate: [PinGuard]
         },
         {
           path:'dashboard',
@@ -65,7 +67,8 @@ import { PinComponent } from './pin/pin.component'
   providers: [
     AuthService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    PinGuard
   ],
   bootstrap: [AppComponent]
 })

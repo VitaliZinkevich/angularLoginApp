@@ -15,5 +15,19 @@ value="submit"
 />
 
 </form>
-Забыли пароль
-Зарегистрироваться
+<input
+type=button
+value = 'Lost your password?'
+(click)='restorePassword()'>
+<a routerLink='/register'>Register</a>
+
+<div *ngIf='restoringStart'>
+<form (submit)=sendRestoringEmail($event)>
+   <input
+   type='text'
+   id='emailForRestore'>
+   <input
+   type='submit'
+   value='Send password to Email'>
+ </form>
+</div>
