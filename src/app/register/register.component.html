@@ -19,3 +19,8 @@ value="submit"
 />
 
 </form>
+
+<p>Password should be at least 4 symbols</p>
+
+<div *ngIf='errorsValidation.length>0'>Errors</div>
+<p *ngFor='let err of errorsValidation'>{{err.error}}</p>

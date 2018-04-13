@@ -18,25 +18,36 @@ export class PinComponent implements OnInit {
   ngOnInit() {
   }
 
-pinValidationStatus
+
+errorsValidation=[]
 
 
 
-pin=''
 
 checkPin(e){
   e.preventDefault()
+  this.errorsValidation = []
 
-this.pin = e.target.pin.value
+  let pin = e.target.pin.value
   // some input VALIDATION
+
+  let onlyNumbers = /[0-9]|\./;
+  if( onlyNumbers.test(pin) ) {
+    this.errorsValidation.push ({error:'PIN got only digits'})
+  }
+  console.log (onlyNumbers.test(pin))
+  console.log (pin.length)
+  if( pin.length < 4 ) {
+    this.errorsValidation.push ({error:'PIN type of 4 digits number'})
+
+  }
+
+
   //if PIN valid
-if (this.pin.length == 4) {
+if (this.errorsValidation.length > 0) {
 
-      this.user.askForUserProfilePin(this.pin).subscribe(
+      this.user.askForUserProfilePin(pin).subscribe(
         (data)=>{
-          console.log (data)
-
-
 
 
             if (data.status == true) {
@@ -45,27 +56,15 @@ if (this.pin.length == 4) {
             this.auth.setLoggedInStatus (true)
 
           } else {
-            window.alert ('wrong PIN')
+            this.errorsValidation.push ({error:'Invalied PIN'})
 
           }
 
-
-
-
-        }
-      )
+        })
 }
  else {
-  console.log ('length < 4')
-}
 
-
-
-
-  //if (this.pin == ) запросу из базы данных
-
-
-
+  }
 }
 
 }

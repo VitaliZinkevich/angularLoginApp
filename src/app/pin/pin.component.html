@@ -2,6 +2,8 @@
 
 <form (submit)='checkPin($event)'>
 <input
+size="4"
+maxlength="4"
 placeholder ='PIN'
 type='text'
 id = 'pin'
@@ -12,3 +14,6 @@ type='submit'
 value = 'Check'
 />
 </form>
+
+<p *ngIf='errorsValidation.length > 0'> Errors</p>
+<div *ngFor='let err of errorsValidation'>{{err.error}}</div>

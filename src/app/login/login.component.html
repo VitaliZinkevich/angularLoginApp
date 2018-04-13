@@ -31,3 +31,6 @@ value = 'Lost your password?'
    value='Send password to Email'>
  </form>
 </div>
+
+<p *ngIf='errorsValidation.length > 0'> Errors</p>
+<div *ngFor='let err of errorsValidation'>{{err.error}}</div>

@@ -18,21 +18,38 @@ export class LoginComponent implements OnInit {
   ngOnInit( ) {
   }
 
+
+
+  errorsValidation=[]
   restoringStart = false;
 
-
+  validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+  }
 
 sendRestoringEmail(e){
   e.preventDefault();
+
+  this.errorsValidation = []
+
   const email = e.target.emailForRestore.value
-  this.user.sendPassword(email).subscribe(
-    (data)=>{
-      console.log (data)
-    }
-  )
+  const validEmail  = this.validateEmail (email)
 
 
+  if (validEmail){
 
+    this.user.sendPassword(email).subscribe(
+      (data)=>{
+        console.log (data)
+      }
+    )
+
+  } else {
+    this.errorsValidation.push ({error: 'Invalied email' })
+
+
+  }
 
 }
 
@@ -42,13 +59,20 @@ sendRestoringEmail(e){
 
   loginUser (e){
     e.preventDefault();
-
+    this.errorsValidation = []
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    const valiedEmail = this.validateEmail(email)
+
+    if (valiedEmail == false) {
+
+      this.errorsValidation.push ({error: 'Wrong email' })
+    }
+    if (this.errorsValidation.length == 0){}
     this.auth.getUserDetails (email,password).subscribe ( <Data> (data) => {
-      console.log(data)
-      if (data.success === true) {
+    console.log(data)
+  if (data.success === true) {
 
 
         this.user.askForUserProfile().subscribe (
@@ -60,16 +84,9 @@ sendRestoringEmail(e){
     this.router.navigate (['admin'])
   }
 }
-
         )
-/*
-          this.router.navigate(['admin'])
-          this.auth.setLoggedInStatus(true);
-
-*/
-
-      } else {
-        window.alert ('INDALIED EMAIL OR PASSWORD')
+} else {
+        this.errorsValidation.push ({error: 'Invalied password or email to login'})
 
 
 
