@@ -1,3 +1,13 @@
-<a *ngIf='!logged' routerLink='/login'>Login</a>
-<a *ngIf='!logged' routerLink='/register'>Register</a>
-<a *ngIf='logged' routerLink='/admin'>Dashboard</a>
+
+<div class="flex-container">
+  <a *ngIf='!logged'
+    class = 'btn btn-primary btn-lg '
+     routerLink='/login'>Login</a>
+  <a *ngIf='!logged'
+   class = 'btn btn-primary btn-lg '
+   routerLink='/register'>Register</a>
+  <a
+  class = 'btn btn-primary btn-lg '
+  *ngIf='logged'
+   routerLink='/admin'>Dashboard</a>
+</div>
