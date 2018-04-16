@@ -1,26 +1,59 @@
-<form (submit)='registerUser($event)'>
-<input
-type="text"
-placeholder="Email"
-id="email">
-<input
-type="password"
-placeholder="Password"
-id="password">
-<input
-type="password"
-placeholder="Confirm Password"
-id="cpassword">
 
-<input
-type="submit"
-value="submit"
+<div class="row">
 
-/>
+     <div class="col-12">
+       <h3>Registration</h3>
 
-</form>
+       <form (submit)='registerUser($event)'>
 
-<p>Password should be at least 4 symbols</p>
+          <hr>
+          <div class="dataInputs">
 
-<div *ngIf='errorsValidation.length>0'>Errors</div>
-<p *ngFor='let err of errorsValidation'>{{err.error}}</p>
+            <input
+            type="text"
+            placeholder="Email"
+            id="email">
+
+
+          <input
+          type="password"
+          placeholder="Password"
+          id="password">
+
+
+          <input
+          type="password"
+          placeholder="Confirm Password"
+          id="cpassword">
+
+
+        </div>
+          <hr>
+
+
+          <input
+          id="startRegistration"
+          type="submit"
+          value="Registration"
+          class="btn btn-primary">
+
+
+
+
+       </form>
+
+
+      </div>
+
+
+ </div>
+ <div class="row">
+   <div class="col-12">
+       <p>Password should be at least 4 symbols</p>
+     <div *ngIf='errorsValidation.length>0'
+       class="badge badge-danger"
+       id="err">
+       It look's like we have got some errors</div>
+     <p class="alert alert-danger" *ngFor='let err of errorsValidation'>{{err.error}}</p>
+</div>
+   </div>

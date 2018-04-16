@@ -1,6 +1,9 @@
-<p>You need enter PIN from Email that was send to your Email</p>
 
-<form (submit)='checkPin($event)'>
+<p>You have to enter PIN from letter that was send to your Email</p>
+
+<form (submit)='checkPin($event)'
+class="flex-form">
+
 <input
 size="4"
 maxlength="4"
@@ -8,12 +11,18 @@ placeholder ='PIN'
 type='text'
 id = 'pin'
 />
-<input
 
+<input
 type='submit'
-value = 'Check'
+value = 'Check my PIN'
+class="class = 'btn btn-primary btn-lg"
 />
+
 </form>
 
-<p *ngIf='errorsValidation.length > 0'> Errors</p>
-<div *ngFor='let err of errorsValidation'>{{err.error}}</div>
+<p id="errorPin" *ngIf='errorsValidation.length > 0'
+  class="badge badge-danger"> It look's like we have got some errors</p>
+  
+<div
+class="alert alert-danger"
+*ngFor='let err of errorsValidation'><li>{{err.error}}</li></div>

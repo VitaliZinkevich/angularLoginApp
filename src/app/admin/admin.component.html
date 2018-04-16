@@ -1,7 +1,10 @@
 
-<p>This quote from {{messageEmail}}</p>
-<p>Quote: {{messageQuote}}</p>
+<p>Welcome, {{messageEmail}}! Good luck!</p>
+<h3>User Profile</h3>
+<p> Message: {{messageQuote}}</p>
 <hr>
+
+
 <form (submit)='saveNewQuote($event)'>
      <input
        type="text"
@@ -9,10 +12,13 @@
        name="newQuote">
 
 <input type='submit' value='Save new quote'/>
+
+
 <br>
 {{updateMessage}}
 </form>
-
-
+<a
+ class = 'btn btn-primary btn-lg '
+ routerLink='/dashboard'>To the game</a>
 <hr>
 <button (click)='logOut()'> LogOut</button>

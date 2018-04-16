@@ -28,15 +28,20 @@ checkPin(e){
   e.preventDefault()
   this.errorsValidation = []
 
-  let pin = e.target.pin.value
+  let pin = e.target.pin.value.toString()
   // some input VALIDATION
 
-  let onlyNumbers = /[0-9]|\./;
+  let onlyNumbers = /^[0-9]*$/;
+
   if( onlyNumbers.test(pin) ) {
+
+  } else {
     this.errorsValidation.push ({error:'PIN got only digits'})
   }
+
   console.log (onlyNumbers.test(pin))
   console.log (pin.length)
+
   if( pin.length < 4 ) {
     this.errorsValidation.push ({error:'PIN type of 4 digits number'})
 
@@ -44,7 +49,9 @@ checkPin(e){
 
 
   //if PIN valid
-if (this.errorsValidation.length > 0) {
+  console.log ('err length' ,this.errorsValidation.length)
+
+if (this.errorsValidation.length == 0) {
 
       this.user.askForUserProfilePin(pin).subscribe(
         (data)=>{

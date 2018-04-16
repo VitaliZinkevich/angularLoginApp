@@ -1,0 +1,66 @@
+
+#registerLink {
+  margin: 10px 0 25px 0;
+  width: 100%;
+
+}
+.error-list-flex {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+
+}
+
+.reg-error {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-login {
+
+
+}
+
+.flex-log-in-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.flex-login > form > input{
+    margin: 15px 0px 10px 0px;
+}
+
+.flex-restre-form {
+
+  margin-top: 20px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.flex-restore {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+}
+
+.flex-restore > form {
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+
+}
+
+.flex-restore > form > input {
+
+  margin: 15px 0px 10px 0px;
+}

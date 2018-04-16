@@ -67,8 +67,9 @@ sendRestoringEmail(e){
 
     if (valiedEmail == false) {
 
-      this.errorsValidation.push ({error: 'Wrong email' })
+      this.errorsValidation.push ({error: 'Invalied email' })
     }
+
     if (this.errorsValidation.length == 0){}
     this.auth.getUserDetails (email,password).subscribe ( <Data> (data) => {
     console.log(data)

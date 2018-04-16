@@ -1,0 +1,25 @@
+#err{
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+p {
+  text-align: center;
+  width: 100%
+}
+
+#startRegistration {
+  width: 100%;
+  margin: 15px 0 15px 0;
+
+}
+
+.dataInputs {
+
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+
+}
