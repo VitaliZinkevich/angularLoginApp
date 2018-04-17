@@ -199,8 +199,9 @@ export class DashboardComponent implements AfterViewInit {
                 addShape(fallingShape);
                 if (fallingShapeRow < 2) {
                     scoreboard.setGameOver();
+
                     scoreboard.setTopscore();
-                  game.setDataAfterGame()
+                    game.setDataAfterGame()
 
 
                 } else {
@@ -303,17 +304,7 @@ export class DashboardComponent implements AfterViewInit {
 
                 this.reset = function () {
 
-
-            // before starting game reseting scoreboard
-
-
                     this.setTopscore();
-
-
-
-
-
-
                     level = lines = score = 0;
                     gameOver = false;
                 }
@@ -364,13 +355,13 @@ export class DashboardComponent implements AfterViewInit {
                             this.addScore(10);
                             break;
                         case 2:
-                            this.addScore(20);
-                            break;
-                        case 3:
                             this.addScore(30);
                             break;
+                        case 3:
+                            this.addScore(50);
+                            break;
                         case 4:
-                            this.addScore(40);
+                            this.addScore(70);
                             break;
                         default:
                             return;
