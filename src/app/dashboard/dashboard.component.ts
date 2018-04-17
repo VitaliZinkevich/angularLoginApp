@@ -293,7 +293,7 @@ export class DashboardComponent implements AfterViewInit {
                 this.reset = function () {
 
 
-            // befpre starting game reseting scoreboard        
+            // befpre starting game reseting scoreboard
 
 
                     this.setTopscore();
@@ -397,7 +397,7 @@ export class DashboardComponent implements AfterViewInit {
 
 
             function draw() {
-                g.clearRect(0, 0, g.width, g.height);
+                g.clearRect(0, 0, 640, 640);
 
                 drawUI();
 
