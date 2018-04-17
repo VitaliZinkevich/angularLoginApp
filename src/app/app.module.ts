@@ -13,11 +13,13 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthService } from './auth.service'
 import { UserService } from './user.service'
+import { GameService } from './game.service'
 import { AuthGuard } from './auth.guard';
 import { PinGuard } from './pin.guard'
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PinComponent } from './pin/pin.component'
+
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import { PinComponent } from './pin/pin.component'
     AuthService,
     UserService,
     AuthGuard,
+    GameService,
     PinGuard
   ],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
+import {GameService} from '../game.service'
 
 
 @Component({
@@ -6,18 +7,22 @@ import { Component, AfterViewInit,  ViewChild, ElementRef } from '@angular/core'
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-
-
 export class DashboardComponent implements AfterViewInit {
- @ViewChild('myCanvas') canvasRef: ElementRef;
 
-  constructor() { }
+@ViewChild('myCanvas') canvasRef: ElementRef;
+
+
+  constructor(private game: GameService) { }
 
 
   ngAfterViewInit(): void {
     let ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
 
+
+
+
         var g = ctx;
+        var game = this.game
 
         // buttons coordinates change
             var right = { x: 1, y: 0 };
@@ -188,11 +193,16 @@ export class DashboardComponent implements AfterViewInit {
                 });
             }
 
+
+
             function shapeHasLanded() {
                 addShape(fallingShape);
                 if (fallingShapeRow < 2) {
                     scoreboard.setGameOver();
                     scoreboard.setTopscore();
+                  game.setDataAfterGame()
+
+
                 } else {
                     scoreboard.addLines(removeLines());
                 }
@@ -255,11 +265,12 @@ export class DashboardComponent implements AfterViewInit {
 
             Shape.prototype.reset = function () {
                 this.pos = new Array(4);
-                console.log (this.pos)
+
                 for (var i = 0; i < this.pos.length; i++) {
                     this.pos[i] = this.shape[i].slice();
                 }
-                console.log (this.pos)
+
+
                 return this.pos;
             }
 
@@ -293,7 +304,7 @@ export class DashboardComponent implements AfterViewInit {
                 this.reset = function () {
 
 
-            // befpre starting game reseting scoreboard
+            // before starting game reseting scoreboard
 
 
                     this.setTopscore();
@@ -308,9 +319,6 @@ export class DashboardComponent implements AfterViewInit {
                 }
 
                 this.setGameOver = function () {
-
-                  // HERE GET DATA FOR STORE IN DB
-
                     gameOver = true;
                 }
 

@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class GameService {
+
+  constructor() { }
+
+  setDataAfterGame (){
+
+    console.log ('setDataAfterGame')
+    
+  }
+
+
+
+}
