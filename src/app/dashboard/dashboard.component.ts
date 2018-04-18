@@ -10,7 +10,7 @@ import { TimerComponent } from '../timer/timer.component'
 export class DashboardComponent implements AfterViewInit {
 
 @ViewChild('myCanvas') canvasRef: ElementRef;
-
+@ViewChild(TimerComponent) timer: TimerComponent
 
   constructor(private game: GameService) { }
 
@@ -23,9 +23,9 @@ export class DashboardComponent implements AfterViewInit {
 
         var g = ctx;
         var game = this.game
+        //this.timer.startTimer() THIS WORKS
 
 
-      
         // buttons coordinates change
             var right = { x: 1, y: 0 };
             var down = { x: 0, y: 1 };
@@ -139,10 +139,12 @@ export class DashboardComponent implements AfterViewInit {
                 }
             });
 
-            addEventListener('click', function () {
-                startNewGame();
-                // get rid of this event after first time or rotete to buttons
-            });
+            var _func = function() { startNewGame(); }
+
+            window.addEventListener('click',  _func)
+
+
+
 
             addEventListener('keyup', function () {
                 keyDown = false;
@@ -322,7 +324,9 @@ export class DashboardComponent implements AfterViewInit {
                 }
 
                 this.setGameOver = function () {
+                  window.addEventListener('click', _func)
                     gameOver = true;
+
                 }
 
                 this.isGameOver = function () {
@@ -549,6 +553,7 @@ export class DashboardComponent implements AfterViewInit {
             }
 
             function startNewGame() {
+                window.removeEventListener ('click', _func)
                 initGrid();
                 selectShape();
                 scoreboard.reset();
@@ -584,7 +589,9 @@ export class DashboardComponent implements AfterViewInit {
   }
 
 
+startGame (){
 
+}
 
 
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-timer',
@@ -6,15 +7,11 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit} from '@angular
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements AfterViewInit {
-@ViewChild('seconds') el:ElementRef;
 
 
-/*
-@ViewChild ('mins') mins:ElementRef;
-@ViewChild ('hours') hours:ElementRef;
-*/
-
-
+sec = 0;
+min = 0;
+hour = 0;
 
 
 
@@ -22,16 +19,44 @@ export class TimerComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    console.log ('timer1')
-    console.log (this.el.nativeElement)
+
+console.log (this.sec)
+
+
+
 
 
   }
-console.log ('timer')
-console.log (this.el.nativeElement)
 
 
 
+
+public  startTimer() {
+
+  setInterval(()=>{
+        this.sec++;
+      if(this.sec >59){this.sec=0;this.min++;
+         if(this.min>59) {
+         this.min=0;this.hour++;
+
+          // if(this.hour <10) {this.hour= '0'+this.hour.toString()
+         };
+                         }
+
+      if(this.min<10){
+      //  this.min= '0'+this.min.toString();}
+
+                     }
+      if(this.sec <10) {
+        //this.sec = '0'+this.sec.toString()
+
+        }
+
+
+
+    },1000);
+
+}
 
 
 

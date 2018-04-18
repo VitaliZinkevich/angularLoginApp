@@ -11,3 +11,6 @@
             border: 3px;
             */
         }
+  .flex-timer {
+      flex-flow: row, wrap;
+}
