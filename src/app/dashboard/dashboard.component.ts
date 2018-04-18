@@ -1,6 +1,6 @@
 import { Component, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
 import {GameService} from '../game.service'
-
+import { TimerComponent } from '../timer/timer.component'
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +24,8 @@ export class DashboardComponent implements AfterViewInit {
         var g = ctx;
         var game = this.game
 
+
+      
         // buttons coordinates change
             var right = { x: 1, y: 0 };
             var down = { x: 0, y: 1 };
@@ -199,9 +201,19 @@ export class DashboardComponent implements AfterViewInit {
                 addShape(fallingShape);
                 if (fallingShapeRow < 2) {
                     scoreboard.setGameOver();
-
                     scoreboard.setTopscore();
-                    game.setDataAfterGame()
+
+
+                    var topScoreToDb = scoreboard.getTopscore()
+                    var linesCountToDb = scoreboard.getLines()
+
+                    game.setDataAfterGame(topScoreToDb, linesCountToDb).subscribe(
+                        (data) => {
+
+                          console.log (data.status)
+                        }
+
+                    )
 
 
                 } else {
@@ -318,10 +330,26 @@ export class DashboardComponent implements AfterViewInit {
                 }
 
                 this.setTopscore = function () {
-                    if (score > topscore) {
-                        topscore = score;
-                    }
+                if (topscore == 0) {
+
+                  game.setDataBeforeGame ().subscribe (
+                    (data)=> {
+
+                  topscore = data.topScore
+                  })
+
                 }
+
+
+
+                      if (score > topscore) {
+                          topscore = score;
+                      }
+
+                }
+
+
+
 
                 this.getTopscore = function () {
                     return topscore;
@@ -524,6 +552,7 @@ export class DashboardComponent implements AfterViewInit {
                 initGrid();
                 selectShape();
                 scoreboard.reset();
+
                 animate(-1);
             }
 

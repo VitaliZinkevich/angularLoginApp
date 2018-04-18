@@ -18,7 +18,8 @@ import { AuthGuard } from './auth.guard';
 import { PinGuard } from './pin.guard'
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PinComponent } from './pin/pin.component'
+import { PinComponent } from './pin/pin.component';
+import { TimerComponent } from './timer/timer.component'
 
 
 
@@ -30,7 +31,8 @@ import { PinComponent } from './pin/pin.component'
     HomeComponent,
     RegisterComponent,
     DashboardComponent,
-    PinComponent
+    PinComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
