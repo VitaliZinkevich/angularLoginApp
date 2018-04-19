@@ -23,7 +23,8 @@ export class DashboardComponent implements AfterViewInit {
 
         var g = ctx;
         var game = this.game
-        //this.timer.startTimer() THIS WORKS
+        var timer = this.timer
+
 
 
         // buttons coordinates change
@@ -208,8 +209,14 @@ export class DashboardComponent implements AfterViewInit {
 
                     var topScoreToDb = scoreboard.getTopscore()
                     var linesCountToDb = scoreboard.getLines()
+                    timer.stopTimer()
+                    
+                    console.log (timer)
+                    var s = timer.sec
+                    var m = timer.min
+                    var h = timer.hour
 
-                    game.setDataAfterGame(topScoreToDb, linesCountToDb).subscribe(
+                    game.setDataAfterGame(topScoreToDb, linesCountToDb, s, m, h).subscribe(
                         (data) => {
 
                           console.log (data.status)
@@ -554,6 +561,7 @@ export class DashboardComponent implements AfterViewInit {
 
             function startNewGame() {
                 window.removeEventListener ('click', _func)
+                timer.startTimer()
                 initGrid();
                 selectShape();
                 scoreboard.reset();
@@ -587,11 +595,6 @@ export class DashboardComponent implements AfterViewInit {
 
 
   }
-
-
-startGame (){
-
-}
 
 
 

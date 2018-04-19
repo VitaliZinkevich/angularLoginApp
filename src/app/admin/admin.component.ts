@@ -3,11 +3,7 @@ import {UserService} from '../user.service'
 import {AuthService} from '../auth.service'
 import {Router} from '@angular/router'
 
-interface backData {
-email: string,
-password: string,
-quote: string
-}
+
 
 @Component({
   selector: 'app-admin',
@@ -22,11 +18,41 @@ constructor ( private user: UserService,
 
 ngOnInit() {
 
-this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
+this.user.getDataForMESSAGE().subscribe ( (data) => {
 
+        console.log (data)
 
         this.messageQuote = data.quote
         this.messageEmail = data.email
+
+        this.topscore = data.topScore
+        this.totalLines = data.totalRows
+
+        let time  =  data.spendedTime
+
+        let hours = Math.floor(time/60/60)
+
+        if (hours<1) {
+          hours = 0
+        }
+
+        time = time-hours*60*60
+
+
+        let minutes= Math.floor (time/60) //minutes
+
+        time = time-minutes*60
+
+        let seconds = Math.floor (time) // sec secLeft
+
+      let  pasredTime = hours.toString()+' часов'+ minutes.toString()+' минут ' + seconds.toString() + ' секунд'
+
+
+
+
+
+
+        this.totalTime = pasredTime
 
   })
 
@@ -83,7 +109,9 @@ this.user.loginOut().subscribe (  (data) => {
 
 
 
-
+topscore = 0
+totalLines = 0
+totalTime = ""
 
 updateMessage= ''
 messageQuote = 'Loading your Quote';

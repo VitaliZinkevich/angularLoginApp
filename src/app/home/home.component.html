@@ -27,10 +27,14 @@
       <a *ngIf='!logged'
        class = 'btn btn-primary btn-lg '
        routerLink='/register'>Register</a>
+       <a
+       class = 'btn btn-primary btn-lg '
+       *ngIf='logged'
+        routerLink='/admin'>Personal Page</a>
       <a
       class = 'btn btn-primary btn-lg '
       *ngIf='logged'
-       routerLink='/admin'>Dashboard</a>
+       routerLink='/dashboard'>To the game</a>
        <a
         class = 'btn btn-primary btn-lg '
         routerLink='/register'>Top Score</a>

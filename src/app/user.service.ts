@@ -53,6 +53,14 @@ interface restoreStatus {
   status:boolean
 }
 
+interface backData {
+email: string,
+quote: string,
+topScore: number,
+totalRows: number,
+spendedTime :number,
+}
+
 @Injectable()
 export class UserService {
 
@@ -99,7 +107,7 @@ askForUserProfilePin(pin){
 
 getDataForMESSAGE() {
 
-    return this.http.get ('/api/database')
+    return this.http.get <backData>('/api/database')
 }
 
 isLoggedIn (){

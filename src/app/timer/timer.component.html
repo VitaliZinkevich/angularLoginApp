@@ -1,5 +1,5 @@
 <div id="timer" >
-  <input #hours id="hours" [value]='hour'  disabled>
-  <input #minutes id="mins" [value]='min'  disabled>
-  <input #seconds id="seconds" [value]='sec'  disabled>
+  <input #hours id="hours" [value]='hour | timer'  disabled>
+  <input #minutes id="mins" [value]='min | timer'  disabled>
+  <input #seconds id="seconds" [value]='sec | timer'  disabled>
 </div>

@@ -23,8 +23,8 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  setDataAfterGame (topScoreToDb, linesCountToDb){
-    return this.http.put <afterGameDataUpdate>('/api/setdataaftergame', {topScoreToDb, linesCountToDb})
+  setDataAfterGame (topScoreToDb, linesCountToDb,s, m, h){
+    return this.http.put <afterGameDataUpdate>('/api/setdataaftergame', {topScoreToDb, linesCountToDb, s, m, h})
   }
 
 

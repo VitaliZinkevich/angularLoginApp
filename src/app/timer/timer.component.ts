@@ -13,18 +13,11 @@ sec = 0;
 min = 0;
 hour = 0;
 
-
-
+timerId = undefined
 
   constructor() { }
 
   ngAfterViewInit() {
-
-console.log (this.sec)
-
-
-
-
 
   }
 
@@ -33,40 +26,35 @@ console.log (this.sec)
 
 public  startTimer() {
 
-  setInterval(()=>{
-        this.sec++;
-      if(this.sec >59){this.sec=0;this.min++;
-         if(this.min>59) {
-         this.min=0;this.hour++;
+  this.sec = 0;
+  this.min = 0;
+  this.hour = 0;
 
-          // if(this.hour <10) {this.hour= '0'+this.hour.toString()
-         };
-                         }
+  this.timerId = setInterval(() => {
 
-      if(this.min<10){
-      //  this.min= '0'+this.min.toString();}
+    this.sec++;
+  if(this.sec >59){this.sec=0;this.min++;
+     if(this.min>59) {
+     this.min=0;this.hour++;
 
-                     }
-      if(this.sec <10) {
-        //this.sec = '0'+this.sec.toString()
+      // if(this.hour <10) {this.hour= '0'+this.hour.toString()
+     };
+    }
 
-        }
+  if(this.min<10){
+  //  this.min= '0'+this.min.toString();}
 
-
-
+                 }
+  if(this.sec <10) {
+    //this.sec = '0'+this.sec.toString()
+          }
     },1000);
-
 }
 
+stopTimer (){
+
+  clearInterval (this.timerId)
 
 
-
-
-
-
-
-
-
-
-
+}
 }

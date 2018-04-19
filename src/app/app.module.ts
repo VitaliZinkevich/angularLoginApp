@@ -19,7 +19,8 @@ import { PinGuard } from './pin.guard'
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PinComponent } from './pin/pin.component';
-import { TimerComponent } from './timer/timer.component'
+import { TimerComponent } from './timer/timer.component';
+import { TimerPipe } from './timer.pipe'
 
 
 
@@ -32,7 +33,8 @@ import { TimerComponent } from './timer/timer.component'
     RegisterComponent,
     DashboardComponent,
     PinComponent,
-    TimerComponent
+    TimerComponent,
+    TimerPipe
   ],
   imports: [
     BrowserModule,
