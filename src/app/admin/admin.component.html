@@ -1,29 +1,55 @@
+<div class="row">
 
-<h3>User Profile</h3>
-<p>Welcome, {{messageEmail}}! Good luck in the game!</p>
-<hr>
-<p> User: {{messageEmail}}</p>
-<p> User's motto: {{messageQuote}}</p>
-<p> User's TOPSCORE: {{topscore}}</p>
-<p> User's all time lines: {{totalLines}}</p>
-<p> User's total time spend in the game: {{totalTime}}</p>
-<hr>
+    <div class="col-xm-12 col-sm-12 col-md-6 col-lg-4">
+
+      <h2>User Profile</h2>
 
 
-<form (submit)='saveNewQuote($event)'>
-     <input
-       type="text"
-       id="newQuote"
-       name="newQuote">
+        <div class="">
 
-<input type='submit' value='Get new motto'/>
+          <h4> User: <b>{{messageEmail}}</b></h4>
+          <h4> User's motto: <b>{{messageQuote}}</b></h4>
+          <h4> User's Score Record: <b>{{topscore}}</b></h4>
+          <h4> User's all time busted lines: <b>{{totalLines}}</b></h4>
 
 
-<br>
-{{updateMessage}}
-</form>
-<a
- class = 'btn btn-primary btn-lg '
- routerLink='/dashboard'>To the game</a>
-<hr>
-<button (click)='logOut()'> LogOut</button>
+
+
+        </div>
+        <button class = 'btn btn-primary btn-lg' (click)='logOut()'> LogOut</button>
+        <a
+         class = 'btn btn-primary btn-lg '
+         routerLink='/dashboard'>To the game</a>
+    </div>
+
+    <div class="col-xm-12 col-sm-12 col-md-6 col-lg-8">
+
+          <h3>Set up your motto, to fear your competitors:</h3>
+
+          <form
+
+          (submit)='saveNewQuote($event)'>
+
+          <input
+                 type="text"
+                 id="newQuote"
+                 name="newQuote">
+
+          <input id='inpSubmit' type='submit' value='Get new motto' class = 'btn btn-primary btn-lg'/>
+
+          </form>
+
+          <p id='mottoUpd'  *ngIf='updateMessage != ""' [class]="messageClass"
+          >{{updateMessage}}</p>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 id='downP'> User's total time spend by playing: <b>{{totalTime}}</b></h3>
+    </div>
+
+</div>

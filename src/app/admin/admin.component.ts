@@ -45,7 +45,7 @@ this.user.getDataForMESSAGE().subscribe ( (data) => {
 
         let seconds = Math.floor (time) // sec secLeft
 
-      let  pasredTime = hours.toString()+' часов'+ minutes.toString()+' минут ' + seconds.toString() + ' секунд'
+      let  pasredTime = hours.toString()+' hours '+ minutes.toString()+' minutes ' + seconds.toString() + ' seconds'
 
 
 
@@ -67,7 +67,10 @@ e.preventDefault()
 const newQuote = e.target.newQuote.value
 
 if (newQuote.length < 3) {
-this.updateMessage = 'qoute at least 3 letter'
+
+this.updateMessage = 'Motto should be at least 3 letter'
+this.messageClass = "alert alert-danger"
+
   return false
 }
 
@@ -78,12 +81,18 @@ console.log (newQuote)
 this.user.quoteUpdate(newQuote). subscribe ((data)=> {
 
 if (data.status == true) {
+  this.messageClass = "alert alert-success"
+  this.messageQuote = data.qoute;
+  this.updateMessage = data.message
 
-this.messageQuote = data.qoute;
+} else {
+
+  this.messageClass = "alert alert-danger"
+  this.updateMessage = data.message
 
 }
 
-this.updateMessage = data.message
+
 
 })
 
@@ -107,7 +116,7 @@ this.user.loginOut().subscribe (  (data) => {
 }
 
 
-
+messageClass = ''
 
 topscore = 0
 totalLines = 0

@@ -210,7 +210,7 @@ export class DashboardComponent implements AfterViewInit {
                     var topScoreToDb = scoreboard.getTopscore()
                     var linesCountToDb = scoreboard.getLines()
                     timer.stopTimer()
-                    
+
                     console.log (timer)
                     var s = timer.sec
                     var m = timer.min
