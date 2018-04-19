@@ -1,3 +1,31 @@
-<p>
-  top-score works!
-</p>
+
+<div class="row">
+
+<div class="col-12">
+  <h2>Top5 TetrisApp</h2>
+
+  <table class="table">
+
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User</th>
+        <th scope="col">Top Score</th>
+        <th scope="col">All lines</th>
+        <th scope="col">Time in game</th>
+        <th scope="col">Motto</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor='let t of top; let i = index'>
+      <tr *ngIf='i<5'>
+        <th scope="row">{{i+ 1}}</th>
+        <td>{{t.email}}</td>
+        <td>{{t.topScore}}</td>
+        <td>{{t.totalRows}}</td>
+        <td>{{t.spendedTime | spendedTime}}</td>
+        <td>{{t.quote}}</td>
+      </tr>
+    </tbody>
+
+  </table>

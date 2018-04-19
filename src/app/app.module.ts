@@ -21,7 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PinComponent } from './pin/pin.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimerPipe } from './timer.pipe';
-import { TopScoreComponent } from './top-score/top-score.component'
+import { TopScoreComponent } from './top-score/top-score.component';
+import { SpendedTimePipe } from './spended-time.pipe'
 
 
 
@@ -36,7 +37,8 @@ import { TopScoreComponent } from './top-score/top-score.component'
     PinComponent,
     TimerComponent,
     TimerPipe,
-    TopScoreComponent
+    TopScoreComponent,
+    SpendedTimePipe
   ],
   imports: [
     BrowserModule,

@@ -61,6 +61,14 @@ totalRows: number,
 spendedTime :number,
 }
 
+interface topScore {
+  email: string,
+  quote: string,
+  topScore: number,
+  totalRows: number,
+  spendedTime :number,
+}
+
 @Injectable()
 export class UserService {
 
@@ -72,6 +80,11 @@ export class UserService {
    };
 
 constructor( private http: HttpClient ) { }
+
+getTop(){
+  return this.http.get <topScore>('/api/gettopfive')
+}
+
 
 sendPassword(email){
 

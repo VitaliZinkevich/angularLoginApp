@@ -27,33 +27,20 @@ this.user.getDataForMESSAGE().subscribe ( (data) => {
 
         this.topscore = data.topScore
         this.totalLines = data.totalRows
-
+        this.totalTime = data.spendedTime
+/* MIGRATED TO PIPE
         let time  =  data.spendedTime
-
         let hours = Math.floor(time/60/60)
-
-        if (hours<1) {
+      if (hours<1) {
           hours = 0
         }
-
         time = time-hours*60*60
-
-
         let minutes= Math.floor (time/60) //minutes
-
         time = time-minutes*60
-
-        let seconds = Math.floor (time) // sec secLeft
-
-      let  pasredTime = hours.toString()+' hours '+ minutes.toString()+' minutes ' + seconds.toString() + ' seconds'
-
-
-
-
-
-
-        this.totalTime = pasredTime
-
+     let seconds = Math.floor (time) // sec secLeft
+     let  pasredTime = hours.toString()+' hours '+ minutes.toString()+' minutes ' + seconds.toString() + ' seconds'
+     this.totalTime = pasredTime
+*/
   })
 
 
@@ -120,7 +107,7 @@ messageClass = ''
 
 topscore = 0
 totalLines = 0
-totalTime = ""
+totalTime = 0
 
 updateMessage= ''
 messageQuote = 'Loading your Quote';

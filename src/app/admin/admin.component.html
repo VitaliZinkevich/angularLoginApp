@@ -12,15 +12,10 @@
           <h4> User's Score Record: <b>{{topscore}}</b></h4>
           <h4> User's all time busted lines: <b>{{totalLines}}</b></h4>
 
-
-
-
         </div>
-        <button class = 'btn btn-primary btn-lg' (click)='logOut()'> LogOut</button>
-        <a
-         class = 'btn btn-primary btn-lg '
-         routerLink='/dashboard'>To the game</a>
-    </div>
+
+</div>
+
 
     <div class="col-xm-12 col-sm-12 col-md-6 col-lg-8">
 
@@ -42,14 +37,23 @@
           <p id='mottoUpd'  *ngIf='updateMessage != ""' [class]="messageClass"
           >{{updateMessage}}</p>
 
-    </div>
+
+<div m-t-2>
+        <button class = 'btn btn-primary btn-lg' (click)='logOut()'> LogOut</button>
+        <button class = 'btn btn-primary btn-lg' routerLink='/topscore'> Top Score</button>
+        <button
+         class = 'btn btn-primary btn-lg '
+         routerLink='/dashboard'>To the game</button>
+</div>
+
 
 </div>
 
+</div>
 <div class="row">
 
     <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
-        <h3 id='downP'> User's total time spend by playing: <b>{{totalTime}}</b></h3>
+        <h3 id='downP'> User's total time spend by playing: <b>{{totalTime | spendedTime}}</b></h3>
     </div>
 
 </div>

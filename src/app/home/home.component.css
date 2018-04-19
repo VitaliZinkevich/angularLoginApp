@@ -24,12 +24,12 @@
 
 .flex-container2 > div {
 
-width: 100% 
+width: 100%
 }
 
 .flex-container > a {
-  width:150px;
-  margin-top: 50px;
+  width:70%;
+  margin-top: 25px;
   text-align: center;
 
 }
