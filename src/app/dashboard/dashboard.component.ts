@@ -1,21 +1,36 @@
 import { Component, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
 import {GameService} from '../game.service'
 import { TimerComponent } from '../timer/timer.component'
+import { AuthService } from '../auth.service'
+import { OnDestroy } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit {
-
+export class DashboardComponent implements AfterViewInit, OnDestroy {
 @ViewChild('myCanvas') canvasRef: ElementRef;
 @ViewChild(TimerComponent) timer: TimerComponent
 
-  constructor(private game: GameService) { }
+  constructor(private game: GameService,
+              private auth: AuthService  ) { }
 
+  ngOnDestroy() {
+
+      //window.removeEventListener ("keydown", stopScroll)
+  }
 
   ngAfterViewInit(): void {
+
+    let stopScroll = function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}
     let ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
 
 
@@ -142,10 +157,9 @@ export class DashboardComponent implements AfterViewInit {
 
             var _func = function() { startNewGame(); }
 
+            window.addEventListener("keydown", stopScroll , false);
+
             window.addEventListener('click',  _func)
-
-
-
 
             addEventListener('keyup', function () {
                 keyDown = false;
@@ -332,6 +346,7 @@ export class DashboardComponent implements AfterViewInit {
 
                 this.setGameOver = function () {
                   window.addEventListener('click', _func)
+                  window.removeEventListener ("keydown", stopScroll)
                     gameOver = true;
 
                 }
@@ -561,6 +576,7 @@ export class DashboardComponent implements AfterViewInit {
 
             function startNewGame() {
                 window.removeEventListener ('click', _func)
+
                 timer.startTimer()
                 initGrid();
                 selectShape();
@@ -596,6 +612,12 @@ export class DashboardComponent implements AfterViewInit {
 
   }
 
+
+ifLogIn (){
+
+return  this.auth.isLogged()
+
+}
 
 
 

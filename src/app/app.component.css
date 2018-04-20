@@ -1,11 +1,11 @@
 .container {
-  min-height: 90vh
+  min-height: 95vh
 }
 
 
 
 .footer {
-  min-height: 10vh;
+  min-height: 5vh;
   border-top: 1px solid black;
   padding-right: 15px;
   padding-left: 15px;

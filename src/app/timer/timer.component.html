@@ -1,6 +1,27 @@
-<div id="timer" class="">
+
+
+
+
+  <div class="table-responsive">
   <h3>Game process timer</h3>
-<span>Hours: </span>  <input #hours id="hours" [value]='hour | timer'  disabled>
-<span>Minutes: </span>   <input #minutes id="mins" [value]='min | timer'  disabled>
-<span>Seconds: </span>   <input #seconds id="seconds" [value]='sec | timer'  disabled>
+  <table class="table table-sm">
+
+    <tbody class="d-block">
+    <tr>
+        <td>Hours:</td>
+        <td> <input size ='3' #hours id="hours" [value]='hour | timer'  disabled></td>
+    </tr>
+
+    <tr>
+        <td>Minutes:</td>
+        <td> <input size ='3' #minutes id="mins" [value]='min | timer'  disabled></td>
+    </tr>
+
+    <tr>
+        <td>Seconds:</td>
+        <td><input size ='3' #seconds id="seconds" [value]='sec | timer'  disabled></td>
+    </tr>
+
+    </tbody>
+  </table>
 </div>
