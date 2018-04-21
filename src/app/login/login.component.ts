@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service'
 import {Router} from '@angular/router'
 import { UserService } from '../user.service'
-import {Data} from '../data'
+
 
 @Component({
   selector: 'app-login',
@@ -82,7 +82,7 @@ sendRestoringEmail(e){
 
         this.user.askForUserProfile().subscribe (
 (data)=>{
-  
+
   if (data.pinValidation == false) {
     this.router.navigate (['pin'])
   } else {
