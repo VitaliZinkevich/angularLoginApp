@@ -1,16 +1,4 @@
 
-#canvas {
-/*
-            position: absolute;
-            top: 45%;
-            left: 50%;
-*/
-
-            /*
-            margin: -320px 0 0 -320px;
-            border: 3px;
-            */
-        }
   .flex-timer {
       flex-flow: row, wrap;
 }

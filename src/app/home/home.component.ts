@@ -17,10 +17,7 @@ logged = false
   ngOnInit() {
 
     this.user.getDataForMESSAGE().subscribe ( <backData> (data) => {
-      console.log (data)
-      console.log (data.pinValidation)
-      console.log (this.auth.isLogged())
-
+  
           if (data.pinValidation == true) {
               this.auth.setLoggedInStatus(true)
               this.logged = this.auth.isLogged()
@@ -30,17 +27,7 @@ logged = false
 
 
       })
-      /*
-this.logged = this.auth.isLogged()
-console.log ('logged')
-console.log (this.logged)
-*/
-    // set session call only from mainroute
-    /*this.user.setSession().subscribe (
-      (data)=>{
-        console.log (data)
-      }
-    )*/
+
 
   }
 

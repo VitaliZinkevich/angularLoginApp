@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   errorsValidation = []
 
-  //heroes:Array<string> = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+
 
   constructor(private auth: AuthService,
               private router: Router) {}
@@ -70,12 +70,6 @@ export class RegisterComponent implements OnInit {
       this.auth.register(email,password, cpassword).subscribe (  (data) => {
 
       if (data.success == true) {
-
-      //this.auth.setLoggedInStatus (true)
-
-      // перевести на ввод пина при регистрации, отдельный компонент
-      // отслеживать ввод пина ??сессиями + хранение сессий или в базе данных в свойствах пользователя?? что бы если попал но перезагрузился было видно что пин не введен
-      // не отображать REGISTRATION если пользователь залогинен
 
       this.router.navigate(['pin'])
 

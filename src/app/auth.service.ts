@@ -27,7 +27,7 @@ export class AuthService {
 
 
   isLogged() {
-    //console.log (this.isLoggedInStatus)
+
     return this.isLoggedInStatus
 
   }
@@ -48,11 +48,7 @@ export class AuthService {
 
         return this.http.post ('api/login', {email, password}, this.httpOptions );
 
-        /*this.http.get('api/login')
-        .subscribe (data => {
-                console.log (data, 'this from sever')
-                //console.log (data.value)
-            })*/
+
 
         }
 

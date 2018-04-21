@@ -39,8 +39,7 @@ checkPin(e){
     this.errorsValidation.push ({error:'PIN got only digits'})
   }
 
-  console.log (onlyNumbers.test(pin))
-  console.log (pin.length)
+
 
   if( pin.length < 4 ) {
     this.errorsValidation.push ({error:'PIN type of 4 digits number'})
@@ -49,7 +48,7 @@ checkPin(e){
 
 
   //if PIN valid
-  console.log ('err length' ,this.errorsValidation.length)
+
 
 if (this.errorsValidation.length == 0) {
 

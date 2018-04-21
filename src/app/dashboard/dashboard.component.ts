@@ -1,36 +1,64 @@
 import { Component, AfterViewInit,  ViewChild, ElementRef } from '@angular/core';
-import {GameService} from '../game.service'
+import { GameService } from '../game.service'
 import { TimerComponent } from '../timer/timer.component'
 import { AuthService } from '../auth.service'
 import { OnDestroy } from '@angular/core';
+import { UserService } from '../user.service'
+import { OnInit } from '@angular/core';
 
-
+import {map} from 'rxjs/operators'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit, OnDestroy {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 @ViewChild('myCanvas') canvasRef: ElementRef;
 @ViewChild(TimerComponent) timer: TimerComponent
 
+ifLogIn = false
+
+
+
   constructor(private game: GameService,
-              private auth: AuthService  ) { }
+              private auth: AuthService,
+              private user: UserService) { }
+
+
+
+ngOnInit (){
+
+
+
+  this.user.askForUserProfile().subscribe ((data)=>{
+
+    if (data.pinValidation == true) {
+
+      this.auth.setLoggedInStatus (true)
+      this.ifLogIn = true
+
+    } else {
+
+    //this.router.navigate(['pin'])
+    console.log ('can not get respond')
+
+    }
+
+  })
+}
 
   ngOnDestroy() {
 
-      //window.removeEventListener ("keydown", stopScroll)
+      window.removeEventListener ("keydown", this.stopScroll)
   }
 
   ngAfterViewInit(): void {
 
-    let stopScroll = function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-    }
-}
+
+
+    let stopScroll = this.stopScroll
+
     let ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
 
 
@@ -155,9 +183,11 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
                 }
             });
 
-            var _func = function() { startNewGame(); }
+            let i = 0;
 
-            window.addEventListener("keydown", stopScroll , false);
+            var _func = function() {startNewGame(); }
+
+
 
             window.addEventListener('click',  _func)
 
@@ -225,7 +255,8 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
                     var linesCountToDb = scoreboard.getLines()
                     timer.stopTimer()
 
-                    console.log (timer)
+
+
                     var s = timer.sec
                     var m = timer.min
                     var h = timer.hour
@@ -233,7 +264,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
                     game.setDataAfterGame(topScoreToDb, linesCountToDb, s, m, h).subscribe(
                         (data) => {
 
-                          console.log (data.status)
+
                         }
 
                     )
@@ -575,6 +606,8 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
             }
 
             function startNewGame() {
+
+                window.addEventListener("keydown", stopScroll);
                 window.removeEventListener ('click', _func)
 
                 timer.startTimer()
@@ -613,12 +646,13 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   }
 
 
-ifLogIn (){
 
-return  this.auth.isLogged()
-
+stopScroll = (e)=>{
+// space and arrow keys
+if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    e.preventDefault();
 }
-
+}
 
 
 }

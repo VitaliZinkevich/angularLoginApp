@@ -29,9 +29,9 @@ top: topScore
 getTopThree(){
   this.user.getTop().subscribe((data)=>{
 
-    console.log (data)
+    
     this.top = data
-    console.log (this.top)
+
   })
 }
 

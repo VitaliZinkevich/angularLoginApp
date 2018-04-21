@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   restoringStart = false;
 
   testImport (){
-    console.log ('testImport')
+
   }
 
   validateEmail(email) {
@@ -45,7 +45,7 @@ sendRestoringEmail(e){
 
     this.user.sendPassword(email).subscribe(
       (data)=>{
-        console.log (data)
+
       }
     )
 
@@ -76,13 +76,13 @@ sendRestoringEmail(e){
 
     if (this.errorsValidation.length == 0){}
     this.auth.getUserDetails (email,password).subscribe ( <Data> (data) => {
-    console.log(data)
+
   if (data.success === true) {
 
 
         this.user.askForUserProfile().subscribe (
 (data)=>{
-  console.log (data)
+  
   if (data.pinValidation == false) {
     this.router.navigate (['pin'])
   } else {

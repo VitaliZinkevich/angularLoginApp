@@ -36,17 +36,13 @@ public  startTimer() {
   if(this.sec >59){this.sec=0;this.min++;
      if(this.min>59) {
      this.min=0;this.hour++;
-
-      // if(this.hour <10) {this.hour= '0'+this.hour.toString()
-     };
+       };
     }
 
   if(this.min<10){
-  //  this.min= '0'+this.min.toString();}
 
                  }
   if(this.sec <10) {
-    //this.sec = '0'+this.sec.toString()
           }
     },1000);
 }
